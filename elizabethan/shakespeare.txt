@@ -1,0 +1,37 @@
+1   Two Gentlemen of Verona
+2   Taming of the Shrew
+3   Henry VI, part 1
+4   Henry VI, part 3
+5   Titus Andronicus
+6   Henry VI, part 2
+7   Richard III
+8   The Comedy of Errors
+9   Love's Labours Lost
+10   A Midsummer Night's Dream
+11   Romeo and Juliet
+12   Richard II
+13   King John
+14   The Merchant of Venice
+15   Henry IV, part 1
+16   The Merry Wives of Windsor
+17   Henry IV, part 2
+18   Much Ado About Nothing
+19   Henry V
+20   Julius Caesar
+21   As You Like It
+22   Hamlet
+23   Twelfth Night
+24   Troilus and Cressida
+25   Measure for Measure
+26   Othello
+27   All's Well That Ends Well
+28   Timon of Athens
+29   The Tragedy of King Lear
+30   Macbeth
+31   Anthony and Cleopatra
+32   Pericles, Prince of Tyre
+33   Coriolanus
+34   Winter's Tale
+35   Cymbeline
+36   The Tempest
+37   Henry VIII
