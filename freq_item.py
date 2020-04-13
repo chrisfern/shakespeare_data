@@ -1,10 +1,10 @@
 import pandas as pd
 from mlxtend.preprocessing import TransactionEncoder
-
 from mlxtend.frequent_patterns import apriori
 import shutil
 from string import ascii_letters
 import sys
+from nltk.util import ngrams
 
 
 
@@ -24,21 +24,22 @@ def make_dataset(text):
 
     dataset=[]
     word=""
+    
     for symbol in first_edit:
         if symbol is " ":
-            if all(c in ascii_letters or c in ["]","]"," "] for c in symbol):
-                story.append(word)
+            
+            story.append(word)
             word=""
             
-        else:
+        elif symbol.isalpha():
             word+=symbol  
 
-        if symbol is "[":
+        if symbol is "[" :
             story=[]
+           
         if symbol is "]":
             dataset.append(story)
-        
-        
+       
         
     return dataset
 
@@ -49,19 +50,27 @@ file=open(sys.argv[1])
 text=file.read()
 
 edit_text=remove_extras(text)
-dataset=make_dataset(edit_text)
+datasetword=make_dataset(edit_text)
+dataset=[]
+for story in datasetword:
+    fivegrams=ngrams(story,3)
+    dataset.append(list(fivegrams))
+    
 
-print(len(dataset[0]))
-
+#dataset=[["a","b","c"],["b"],["b","c"]]
 te=TransactionEncoder()
 te_ary=te.fit(dataset).transform(dataset)
 df=pd.DataFrame(te_ary,columns=te.columns_)
-print(df.shape)
+#print(df)
+
 
 print("about to start 1")
-frequent_itemsets, rules=apriori(df[1:2], min_support=1)
+frequent_itemsets=apriori(df, min_support=0.6, use_colnames=True)
 
-#print("about to start 2")
-#frequent_itemsets['length']=frequent_itemsets['itemsets'].apply(lambda x: len(x))
+frequent_itemsets['length']=frequent_itemsets['itemsets'].apply(lambda x: len(x))
+frequent_itemsets=frequent_itemsets.sort_values(by='support')
 
-#print(frequent_itemset
+print("about to start 2")
+
+
+print(frequent_itemsets)
